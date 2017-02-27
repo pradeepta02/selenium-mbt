@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.cleartrip</groupId>
+	<version>1.0-SNAPSHOT</version>
+	<artifactId>mbt</artifactId>
+	<name>Cleartrip Demo Test</name>
+
+	<properties>
+		<graphwalker.version>3.4.2</graphwalker.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<webdriver.version>3.2.0</webdriver.version>
+		<testng.version>6.10</testng.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.graphwalker</groupId>
+			<artifactId>graphwalker-core</artifactId>
+			<version>${graphwalker.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.graphwalker</groupId>
+			<artifactId>graphwalker-io</artifactId>
+			<version>${graphwalker.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.graphwalker</groupId>
+			<artifactId>graphwalker-java</artifactId>
+			<version>${graphwalker.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.graphwalker</groupId>
+			<artifactId>graphwalker-maven-plugin</artifactId>
+			<version>${graphwalker.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${webdriver.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-api -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-api</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>21.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.graphwalker</groupId>
+				<artifactId>graphwalker-maven-plugin</artifactId>
+				<version>${graphwalker.version}</version>
+				<!-- Bind goals to the default lifecycle -->
+				<executions>
+					<execution>
+						<id>generate-test-sources</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>generate-test-sources</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.graphwalker</groupId>
+										<artifactId>
+											graphwalker-maven-plugin
+										</artifactId>
+										<versionRange>
+											[3.4.2,)
+										</versionRange>
+										<goals>
+											<goal>
+												generate-test-sources
+											</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
